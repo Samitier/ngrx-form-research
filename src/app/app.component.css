@@ -1,0 +1,13 @@
+.container {
+  background-color: #e1f7f9;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  gap: 1rem;
+  padding: 1rem 5rem;
+}
+
+.container-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
