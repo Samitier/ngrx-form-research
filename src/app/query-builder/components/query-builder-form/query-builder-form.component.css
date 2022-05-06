@@ -1,0 +1,12 @@
+.query-builder-form {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: cyan;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}

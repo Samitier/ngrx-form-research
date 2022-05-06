@@ -1,0 +1,16 @@
+.field-visibility-toggle {
+  position: relative;
+}
+
+.tooltip {
+  background: white;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  z-index: 1;
+}

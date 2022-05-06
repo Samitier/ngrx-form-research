@@ -1,0 +1,25 @@
+import { createAction, props } from '@ngrx/store';
+import { QueryRow } from './query-row.model';
+
+export const addQueryRow = createAction(
+  '[Query] Add query row',
+  props<{ queryRow?: QueryRow }>()
+);
+
+export const removeQueryRow = createAction(
+  '[Query] Remove query row',
+  props<{ queryRow: QueryRow }>()
+);
+
+export const updateQueryRow = createAction(
+  '[Query] Update query row',
+  props<{ id: string; key: string; value: any }>()
+);
+
+export const translateToCodeMode = createAction(
+  '[Query] Translate to code mode'
+);
+
+export const translateToBuildMode = createAction(
+  '[Query] Translate to build mode'
+);

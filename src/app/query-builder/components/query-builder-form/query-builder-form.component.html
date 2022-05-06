@@ -1,0 +1,40 @@
+<div class="query-builder-form">
+  <div class="form-group">
+    <label for="isActive">{{ id }}</label>
+    <input type="checkbox" name="isActive" id="isActive" [checked]="isActive"
+    (change)="isActive = !isActive"/>
+  </div>
+  <ng-container *ngIf="isBuildMode">
+    <div class="form-group">
+      <label for="metric">Metric:</label>
+      <input type="text" name="metric" id="metric" [(ngModel)]="metric" [ngModelOptions]="{ updateOn: 'blur' }">
+    </div>
+    <div class="form-group">
+      <label for="aggregationType">Aggregation type:</label>
+      <input type="text" name="aggregationType" id="aggregationType" [(ngModel)]="aggregationType" [ngModelOptions]="{ updateOn: 'blur' }">
+    </div>
+    <div *ngIf="visibility?.isSplitByVisible" class="form-group">
+      <label for="splitBy">Split by:</label>
+      <input type="text" name="splitBy" id="splitBy" [(ngModel)]="splitBy" [ngModelOptions]="{ updateOn: 'blur' }">
+    </div>
+    <div *ngIf="visibility?.isFilterByVisible" class="form-group">
+      <label for="filterBy">Filter by:</label>
+      <input type="text" name="filterBy" id="filterBy" [(ngModel)]="filterBy" [ngModelOptions]="{ updateOn: 'blur' }">
+    </div>
+    <div *ngIf="visibility?.isSortByVisible" class="form-group">
+      <label for="sortBy">Sort by:</label>
+      <input type="text" name="sortBy" id="sortBy" [(ngModel)]="sortBy" [ngModelOptions]="{ updateOn: 'blur' }">
+    </div>
+    <div *ngIf="visibility?.isLimitByVisible" class="form-group">
+      <label for="limitBy">Limit by:</label>
+      <input type="text" name="limitBy" id="limitBy" [(ngModel)]="limitBy" [ngModelOptions]="{ updateOn: 'blur' }">
+    </div>
+  </ng-container>
+  <div *ngIf="!isBuildMode" class="form-group">
+    <label for="code">Metric:</label>
+    <input type="text" name="code" id="code" [(ngModel)]="code" [ngModelOptions]="{ updateOn: 'blur' }">
+  </div>
+  <app-field-visibility-toggle *ngIf="visibility" [(visibility)]="visibility"></app-field-visibility-toggle>
+  <button [disabled]="!isDeleteEnabled" (click)="deleteRow()">Delete</button>
+  <button (click)="duplicateRow()">Duplicate</button>
+</div>

@@ -1,0 +1,49 @@
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import {
+  defaultQueryRowFieldsVisibility,
+  QueryRowFieldsVisibility,
+} from '../../state/query-row.model';
+
+@Component({
+  selector: 'app-field-visibility-toggle',
+  templateUrl: './field-visibility-toggle.component.html',
+  styleUrls: ['./field-visibility-toggle.component.css'],
+})
+export class FieldVisibilityToggleComponent {
+  visibilityFields = defaultQueryRowFieldsVisibility;
+
+  @Input() set visibility(value: QueryRowFieldsVisibility) {
+    this.visibilityFields = { ...value };
+  }
+
+  @Output() visibilityChange = new EventEmitter<QueryRowFieldsVisibility>();
+  @ViewChild('fieldVisibilityElement') fieldVisibilityElement?: ElementRef;
+
+  isOpen = false;
+
+  openTooltip() {
+    this.isOpen = true;
+  }
+
+  closeTooltip() {
+    this.visibilityChange.emit(this.visibilityFields);
+    this.isOpen = false;
+  }
+
+  @HostListener('document:mousedown', ['$event'])
+  onGlobalClick(event: MouseEvent): void {
+    if (!this.isOpen) return;
+    const isClickInside = this.fieldVisibilityElement?.nativeElement.contains(
+      event.target
+    );
+    if (!isClickInside) this.closeTooltip();
+  }
+}

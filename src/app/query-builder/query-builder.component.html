@@ -1,3 +1,15 @@
+
+<div class="tabs">
+  <button [disabled]="isBuildMode" (click)="toggleBuildMode()">Build</button>
+  <button [disabled]="!isBuildMode" (click)="toggleCodeMode()">Code</button>
+</div>
 <div class="container">
-  query builder
+  <app-query-builder-form
+    *ngFor="let queryRow of query$ | async; let length = count"
+    [queryRowId]="queryRow.id"
+    [isDeleteEnabled]="length >1"
+    [isBuildMode]="isBuildMode"
+  ></app-query-builder-form>
+  <button class="add" (click)="addRow()">Add metric</button>
+  <button class="run" (click)="runQuery()">Run query</button>
 </div>

@@ -1,0 +1,10 @@
+<div class="field-visibility-toggle" #fieldVisibilityElement>
+  <button (click)="openTooltip()">+</button>
+  <div class="tooltip" *ngIf="isOpen" >
+    <div *ngFor="let item of visibilityFields | keyvalue" class="form-group">
+      <label [for]="item.key">{{ item.key }}</label>
+        <input type="checkbox"  [name]="item.key" [id]="item.key" [checked]="item.value"
+        (change)="visibilityFields[item.key] = !item.value"/>
+    </div>
+  </div>
+</div>

@@ -5,11 +5,14 @@ import { AppComponent } from './app.component';
 import { QueryBuilderComponent } from './query-builder/query-builder.component';
 import { VisualAdapterComponent } from './visual-adapter/visual-adapter.component';
 import { SettingsComponent } from './settings/settings.component';
-import { EntityDataModule } from '@ngrx/data';
-import { entityConfig } from './store/entity-metadata';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { FormsModule } from '@angular/forms';
+
+import { queryReducer } from './query-builder/state/query.reducer';
+import { QueryBuilderFormComponent } from './query-builder/components/query-builder-form/query-builder-form.component';
+import { FieldVisibilityToggleComponent } from './query-builder/components/field-visibility-toggle/field-visibility-toggle.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +20,14 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     QueryBuilderComponent,
     VisualAdapterComponent,
     SettingsComponent,
+    QueryBuilderFormComponent,
+    FieldVisibilityToggleComponent,
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({}, {}),
+    FormsModule,
+    StoreModule.forRoot({ query: queryReducer }),
     EffectsModule.forRoot([]),
-    EntityDataModule.forRoot(entityConfig),
     StoreDevtoolsModule.instrument(),
   ],
   providers: [],
