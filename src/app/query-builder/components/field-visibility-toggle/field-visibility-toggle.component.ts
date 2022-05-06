@@ -34,8 +34,12 @@ export class FieldVisibilityToggleComponent {
   }
 
   closeTooltip() {
-    this.visibilityChange.emit(this.visibilityFields);
     this.isOpen = false;
+  }
+
+  onChange(key: keyof QueryRowFieldsVisibility, value: boolean) {
+    this.visibilityFields[key] = !value;
+    this.visibilityChange.emit(this.visibilityFields);
   }
 
   @HostListener('document:mousedown', ['$event'])

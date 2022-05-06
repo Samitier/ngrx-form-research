@@ -13,7 +13,7 @@ export const removeQueryRow = createAction(
 
 export const updateQueryRow = createAction(
   '[Query] Update query row',
-  props<{ id: string; key: string; value: any }>()
+  props<{ id: string; key: keyof QueryRow; value: any }>()
 );
 
 export const translateToCodeMode = createAction(

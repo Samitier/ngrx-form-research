@@ -30,7 +30,7 @@ export const queryReducer = createReducer(
           [key]: value,
         };
       } else {
-        return { ...row };
+        return row;
       }
     });
   }),

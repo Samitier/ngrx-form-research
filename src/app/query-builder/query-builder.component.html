@@ -5,8 +5,8 @@
 </div>
 <div class="container">
   <app-query-builder-form
-    *ngFor="let queryRow of query$ | async; let length = count"
-    [queryRowId]="queryRow.id"
+    *ngFor="let rowId of queryIds$ | async; let length = count"
+    [queryRowId]="rowId"
     [isDeleteEnabled]="length >1"
     [isBuildMode]="isBuildMode"
   ></app-query-builder-form>

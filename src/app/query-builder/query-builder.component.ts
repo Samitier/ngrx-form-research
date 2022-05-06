@@ -5,7 +5,7 @@ import {
   translateToBuildMode,
   translateToCodeMode,
 } from './state/query.actions';
-import { selectQuery } from './state/query.selector';
+import { selectQueryIds } from './state/query.selector';
 
 @Component({
   selector: 'app-query-builder',
@@ -16,7 +16,7 @@ export class QueryBuilderComponent {
   @Output() onRunQuery = new EventEmitter();
 
   isBuildMode = true;
-  query$ = this.store.select(selectQuery);
+  queryIds$ = this.store.select(selectQueryIds);
 
   constructor(private store: Store) {}
 
